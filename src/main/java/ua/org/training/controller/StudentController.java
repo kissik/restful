@@ -29,13 +29,13 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student addStudent(@RequestParam Student student) {
+    public Student addStudent(@RequestBody Student student) {
         return studentService.save(student);
     }
 
     @PutMapping
     public Student updateStudent(@PathVariable Long id,
-                                 @RequestParam Student student) {
+                                 @RequestBody Student student) {
         student.setId(id);
         return studentService.update(student);
     }

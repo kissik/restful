@@ -24,18 +24,18 @@ public class GroupController {
     }
 
     @GetMapping(value = "/all", params = {"page", "size"}, produces = "application/json")
-    public Page<Group> getStudentPage(Pageable pageable) {
+    public Page<Group> getGroupPage(Pageable pageable) {
         return groupService.findAll(pageable);
     }
 
     @PostMapping
-    public Group addGroup(@RequestParam Group group) {
+    public Group addGroup(@RequestBody Group group) {
         return groupService.save(group);
     }
 
     @PutMapping
     public Group updateGroup(@PathVariable Long id,
-                                 @RequestParam Group group) {
+                             @RequestBody Group group) {
         group.setId(id);
         return groupService.update(group);
     }
