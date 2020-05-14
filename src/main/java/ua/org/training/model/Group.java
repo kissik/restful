@@ -11,7 +11,7 @@ public class Group {
 
     final static int GROUP_VARCHAR_SIZE = 5;
 
-    final static String TABLE_NAME = "group";
+    final static String TABLE_NAME = "`group`";
     final static String COLUMN_ID = "id";
     final static String COLUMN_TITLE = "title";
     final static String MESSAGE_TITLE = "";
