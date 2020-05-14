@@ -50,7 +50,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudentsFromList(List<Student> studentsList) {
-
+        if (studentsList != null) {
+            for (Student student : studentsList) {
+                studentRepository.deleteById(student.getId());
+            }
+        }
     }
 
     @Override
