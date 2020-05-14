@@ -44,8 +44,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Page<Student> findAllByGroupId(Long groupId, Pageable pageable) {
-        return studentRepository.findAllByGroupId(groupId, pageable);
+    public List<Student> findAllByGroupId(Long groupId) {
+        return studentRepository.findAllByGroupId(groupId);
     }
 
     @Override

@@ -8,5 +8,5 @@ import ua.org.training.model.Student;
 import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
-    Page<Student> findAllByGroupId(Long groupId, Pageable pageable);
+    List<Student> findAllByGroupId(Long groupId);
 }

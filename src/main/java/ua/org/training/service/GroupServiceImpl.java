@@ -42,7 +42,9 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Group findById(Long groupId) throws GroupNotFoundException{
-        return groupRepository.findById(groupId).orElseThrow(GroupNotFoundException::new);
+        Group groupToReturn = groupRepository.findById(groupId).orElseThrow(GroupNotFoundException::new);
+        groupToReturn.setStudentsList(studentService.findAllByGroupId(groupToReturn.getId()));
+        return groupToReturn;
     }
 
     @Transactional
@@ -55,6 +57,10 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Page<Group> findAll(Pageable pageable) {
-        return groupRepository.findAll(pageable);
+        Page<Group> groupPage = groupRepository.findAll(pageable);
+        groupPage.forEach(group -> {
+            group.setStudentsList(studentService.findAllByGroupId(group.getId()));
+        });
+        return groupPage;
     }
 }

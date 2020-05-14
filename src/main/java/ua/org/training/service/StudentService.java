@@ -18,7 +18,7 @@ public interface StudentService {
 
     Page<Student> findAll(Pageable pageable);
 
-    Page<Student> findAllByGroupId(Long groupId, Pageable pageable);
+    List<Student> findAllByGroupId(Long groupId);
 
     void deleteStudentsFromList(List<Student> studentsList);
 
