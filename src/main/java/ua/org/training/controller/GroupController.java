@@ -23,7 +23,7 @@ public class GroupController {
         return groupService.findById(id);
     }
 
-    @GetMapping(value = "/all", params = {"page", "size"}, produces = "application/json")
+    @GetMapping(params = {"page", "size"}, produces = "application/json")
     public Page<Group> getGroupPage(Pageable pageable) {
         return groupService.findAll(pageable);
     }
@@ -33,9 +33,10 @@ public class GroupController {
         return groupService.save(group);
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     public Group updateGroup(@PathVariable Long id,
                              @RequestBody Group group) {
+        Group oldGroup = groupService.findById(id);
         group.setId(id);
         return groupService.update(group);
     }

@@ -23,7 +23,7 @@ public class StudentController {
         return studentService.findById(id);
     }
 
-    @GetMapping(value = "/all", params = {"page", "size"}, produces = "application/json")
+    @GetMapping(params = {"page", "size"}, produces = "application/json")
     public Page<Student> getStudentPage(Pageable pageable) {
         return studentService.findAll(pageable);
     }
@@ -36,6 +36,7 @@ public class StudentController {
     @PutMapping
     public Student updateStudent(@PathVariable Long id,
                                  @RequestBody Student student) {
+        Student oldStudent = studentService.findById(id);
         student.setId(id);
         return studentService.update(student);
     }
